@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>BIOLIS CLINIC様 ファーストビュー案 | ZOEN-TECH</title>
+</head>
+<body>
+<style>
+:root{
+  --ink:#171210; --ink2:#241c17; --ink3:#3a2f27;
+  --gold:#c2a361; --gold-l:#e3d0a5; --gold-d:#8f7638;
+  --paper:#f7f3ec; --line:#e2dbcf; --sub:#6f6558;
+  --serif:'Hiragino Mincho ProN','Yu Mincho','YuMincho','Noto Serif JP',serif;
+  --sans:'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic','Noto Sans JP',sans-serif;
+  --card:#fff;
+}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --paper:#14100e; --line:#332a22; --sub:#a89c8c; --card:#1c1714; }
+}
+:root[data-theme="dark"]{ --paper:#14100e; --line:#332a22; --sub:#a89c8c; --card:#1c1714; }
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);font-family:var(--sans);color:var(--ink);line-height:1.8;-webkit-font-smoothing:antialiased}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) body{color:#efe8dd} }
+:root[data-theme="dark"] body{color:#efe8dd}
+
+.wrap{max-width:1180px;margin:0 auto;padding:56px 24px 96px}
+.doc-head{border-bottom:2px solid var(--ink);padding-bottom:20px;margin-bottom:12px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .doc-head{border-color:var(--gold)}}
+:root[data-theme="dark"] .doc-head{border-color:var(--gold)}
+.eyebrow{font-size:11px;letter-spacing:.28em;color:var(--gold-d);font-weight:700}
+.doc-head h1{font-family:var(--serif);font-size:30px;line-height:1.4;margin-top:8px;font-weight:600}
+.doc-head p{font-size:13px;color:var(--sub);margin-top:8px}
+
+h2.sec{font-family:var(--serif);font-size:22px;margin:64px 0 6px;display:flex;align-items:baseline;gap:12px}
+h2.sec .n{font-family:var(--sans);font-size:11px;letter-spacing:.2em;color:#fff;background:var(--ink);padding:4px 9px;border-radius:3px;font-weight:700}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) h2.sec .n{background:var(--gold);color:var(--ink)}}
+:root[data-theme="dark"] h2.sec .n{background:var(--gold);color:var(--ink)}
+.lead{font-size:13.5px;color:var(--sub);margin-bottom:22px;max-width:820px}
+
+/* ---- mock frame ---- */
+.frame{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#000;box-shadow:0 6px 30px rgba(0,0,0,.14)}
+.frame-bar{background:#e8e3da;padding:7px 12px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--line)}
+.dot{width:9px;height:9px;border-radius:50%;background:#c9c2b6}
+.frame-url{margin-left:8px;font-size:10.5px;color:#7b7366;background:#fff;border-radius:20px;padding:2px 12px}
+.scaler{width:100%;overflow:hidden;position:relative}
+.stage{width:1280px;transform-origin:top left}
+
+/* ================= FV common ================= */
+.fv{position:relative;width:1280px;height:700px;overflow:hidden;background:var(--ink);color:#fff;font-family:var(--sans)}
+.fv .bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:saturate(.85)}
+.fv .veil{position:absolute;inset:0}
+
+/* header */
+.gh{position:absolute;top:0;left:0;right:0;height:72px;display:flex;align-items:center;gap:26px;padding:0 26px;z-index:5}
+.gh .logo{font-family:var(--serif);font-size:19px;letter-spacing:.08em;color:#fff;line-height:1.1}
+.gh .logo small{display:block;font-size:8px;letter-spacing:.42em;color:var(--gold-l);margin-top:2px}
+.gnav{display:flex;gap:20px;font-size:12.5px;letter-spacing:.04em;margin-left:6px}
+.gnav a{color:#fff;text-decoration:none;opacity:.92;padding-bottom:3px}
+.gnav a.on{border-bottom:1.5px solid var(--gold);opacity:1}
+.gh .right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.tel{text-align:right;line-height:1.2}
+.tel b{font-family:var(--serif);font-size:16px;letter-spacing:.02em}
+.tel span{display:block;font-size:9px;color:#d8cfbe}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:12.5px;font-weight:700;border-radius:2px;padding:11px 20px;text-decoration:none}
+.btn-line{background:#06C755;color:#fff}
+.btn-gold{background:linear-gradient(180deg,var(--gold-l),var(--gold));color:#2a2113}
+.btn-ghost{border:1px solid rgba(255,255,255,.55);color:#fff}
+
+/* copy */
+.copy .place{font-size:11px;letter-spacing:.22em;color:var(--gold-l);display:flex;align-items:center;gap:10px}
+.copy .place::before{content:"";width:26px;height:1px;background:var(--gold)}
+.copy h2{font-family:var(--serif);font-weight:500;letter-spacing:.04em;line-height:1.28;margin:16px 0 0}
+.copy p.sub{font-size:14px;line-height:2;color:#e5ded2;margin-top:16px}
+
+.badge{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--gold);padding:8px 14px;border-radius:2px;background:rgba(20,15,10,.5);backdrop-filter:blur(3px)}
+.badge .k{font-size:9.5px;letter-spacing:.18em;color:var(--ink);background:var(--gold);padding:3px 7px;font-weight:800}
+.badge .v{font-size:12.5px;color:var(--gold-l);letter-spacing:.05em}
+
+/* gate cards (A) */
+.gates{position:absolute;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(3,1fr);z-index:4}
+.gate{position:relative;padding:22px 24px 20px;border-left:1px solid rgba(255,255,255,.16);background:linear-gradient(180deg,rgba(12,9,7,0) 0%,rgba(12,9,7,.86) 55%);text-decoration:none;color:#fff;display:block}
+.gate:first-child{border-left:none}
+.gate .en{font-size:9.5px;letter-spacing:.24em;color:var(--gold);}
+.gate .ja{font-family:var(--serif);font-size:22px;margin-top:5px;letter-spacing:.05em}
+.gate .desc{font-size:11.5px;color:#cfc6b7;margin-top:7px;line-height:1.7}
+.gate .go{position:absolute;right:22px;bottom:22px;width:30px;height:30px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-size:11px}
+.gate .mark{position:absolute;top:-11px;left:24px;background:var(--gold);color:#241a0b;font-size:9.5px;font-weight:800;letter-spacing:.1em;padding:3px 8px}
+
+/* scroll cue */
+.cue{position:absolute;right:34px;bottom:190px;font-size:9px;letter-spacing:.24em;color:#cfc6b7;z-index:4;writing-mode:vertical-rl}
+
+/* ---- B: doctors ---- */
+.docrow{position:absolute;right:30px;bottom:34px;display:flex;gap:10px;z-index:4}
+.doccard{width:132px;background:rgba(18,13,10,.72);border:1px solid rgba(226,208,165,.35);backdrop-filter:blur(4px)}
+.doccard .ph{height:100px;background:linear-gradient(160deg,#4b3f33,#221a14);position:relative;display:grid;place-items:center}
+.doccard .ph span{font-size:9.5px;color:#8e8272;letter-spacing:.1em}
+.doccard .tx{padding:9px 11px 12px}
+.doccard .tx b{font-family:var(--serif);font-size:14px;letter-spacing:.04em;display:block}
+.doccard .tx i{font-style:normal;font-size:10px;color:var(--gold-l);display:block;margin-top:3px}
+.doccard .tx u{text-decoration:none;font-size:10px;color:#b9ae9c;display:block;margin-top:6px;border-top:1px solid rgba(255,255,255,.13);padding-top:6px}
+
+/* ---- C: booking widget ---- */
+.bkw{position:absolute;right:44px;top:50%;transform:translateY(-50%);width:396px;background:rgba(247,243,236,.97);color:#241c17;border-radius:4px;padding:22px;z-index:4;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.bkw h4{font-family:var(--serif);font-size:16px;letter-spacing:.05em}
+.bkw .steps{display:flex;gap:6px;margin:14px 0 12px}
+.bkw .st{flex:1;text-align:center;font-size:9.5px;padding:5px 0;background:#e8e2d6;color:#7c7263;letter-spacing:.04em}
+.bkw .st.on{background:var(--ink);color:var(--gold-l)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:11.5px;border:1px solid #cdc4b4;padding:6px 11px;border-radius:20px;color:#4a4136;background:#fff}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-top:12px}
+.cal div{font-size:10px;text-align:center;padding:5px 0;background:#fff;border:1px solid #e3dccf;color:#3f382e}
+.cal div.h{background:transparent;border:none;color:#8b8172;font-size:9px}
+.cal div.o{background:#fff;color:var(--gold-d);font-weight:700;cursor:pointer}
+.cal div.x{color:#c3bbae}
+.cal div.sel{background:var(--ink);color:var(--gold-l);border-color:var(--ink)}
+.bkw .note{font-size:10px;color:#7c7263;margin-top:11px;line-height:1.65}
+.bkw .cta{display:block;text-align:center;margin-top:12px;background:linear-gradient(180deg,var(--gold-l),var(--gold));color:#2a2113;font-weight:800;font-size:13.5px;padding:13px;text-decoration:none;border-radius:2px}
+
+/* photo note */
+.phnote{position:absolute;z-index:6;background:rgba(255,255,255,.93);color:#3a2f27;font-size:10.5px;padding:5px 10px;border-left:3px solid var(--gold-d);letter-spacing:.03em}
+
+/* ---- SP ---- */
+.spwrap{display:flex;gap:36px;flex-wrap:wrap;align-items:flex-start}
+.phone{width:390px;flex:none;border:9px solid #17120f;border-radius:36px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.25);background:#000}
+.spfv{position:relative;width:372px;height:700px;background:var(--ink);color:#fff;overflow:hidden}
+.sph{position:absolute;top:0;left:0;right:0;height:56px;display:flex;align-items:center;padding:0 14px;z-index:5}
+.sph .logo{font-family:var(--serif);font-size:15px;letter-spacing:.06em}
+.sph .logo small{display:block;font-size:6.5px;letter-spacing:.4em;color:var(--gold-l)}
+.sph .mn{margin-left:auto;display:flex;flex-direction:column;gap:4px}
+.sph .mn i{display:block;width:22px;height:1.5px;background:#fff}
+.spbar{position:absolute;left:0;right:0;bottom:0;display:grid;grid-template-columns:1fr 1fr 1.4fr;z-index:6}
+.spbar a{text-decoration:none;text-align:center;font-size:11.5px;font-weight:700;padding:14px 0}
+.spbar .b1{background:#2b231d;color:#fff}
+.spbar .b2{background:#06C755;color:#fff}
+.spbar .b3{background:linear-gradient(180deg,var(--gold-l),var(--gold));color:#2a2113}
+.spgates{position:absolute;left:0;right:0;bottom:47px;display:grid;grid-template-columns:repeat(3,1fr);z-index:5}
+.spgate{padding:12px 8px 14px;text-align:center;border-left:1px solid rgba(255,255,255,.15);background:linear-gradient(180deg,rgba(10,8,6,0),rgba(10,8,6,.9) 60%);color:#fff;text-decoration:none}
+.spgate:first-child{border-left:none}
+.spgate .en{font-size:7.5px;letter-spacing:.16em;color:var(--gold)}
+.spgate .ja{font-family:var(--serif);font-size:14px;margin-top:3px}
+
+/* annotations */
+.notes{flex:1;min-width:290px}
+.notes h4{font-family:var(--serif);font-size:15px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.notes ol{padding-left:1.15em;font-size:13px}
+.notes ol li{margin-bottom:11px}
+.notes ol li b{color:var(--gold-d)}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:20px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+.box{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px 20px}
+.box h4{font-size:13.5px;margin-bottom:8px;font-weight:700}
+.box ul{padding-left:1.1em;font-size:12.5px;color:var(--sub)}
+.box ul li{margin-bottom:5px}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;padding:3px 9px;border-radius:2px;margin-bottom:8px}
+.tag.rec{background:var(--gold);color:#2a2113}
+.tag.alt{background:#e6e0d4;color:#5f564a}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tag.alt{background:#3a3128;color:#c9bfae}}
+:root[data-theme="dark"] .tag.alt{background:#3a3128;color:#c9bfae}
+.cap{font-size:11.5px;color:var(--sub);margin-top:10px}
+hr.sep{border:none;border-top:1px solid var(--line);margin:56px 0 0}
+</style>
+
+<div class="wrap">
+
+<p style="margin-bottom:18px"><a href="content.html" style="font-size:12.5px;color:var(--gold-d);text-decoration:none">← 提案書本体に戻る</a></p>
+
+<div class="doc-head">
+  <div class="eyebrow">BIOLIS CLINIC ｜ SITE RENEWAL</div>
+  <h1>ファーストビュー デザイン案</h1>
+  <p>3案（A／B／C）とスマートフォン版。2026-08-18 時点の現行サイトを踏まえた叩き台です。<br>写真は現行サイトのCG素材を仮置きしています。本番は「執刀中のカット」「医師の実写」に差し替える前提です。</p>
+</div>
+
+<!-- ============ 現行 ============ -->
+<h2 class="sec"><span class="n">NOW</span>現行のファーストビュー</h2>
+<p class="lead">内装CGとロゴのみ。美しいが「何のクリニックか」「なぜここか」が1秒で伝わらない。開業直後で指名検索がまだ弱い状態では、FVが自己紹介として機能していないのが最大の機会損失です。</p>
+<div class="frame">
+  <div class="frame-bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="frame-url">biolisclinic.com</span></div>
+  <div class="scaler" id="sc0"><div class="stage" id="st0">
+    <div class="fv">
+      <div class="bg" style="background-image:url(img/fv1.jpg)"></div>
+      <div class="veil" style="background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.15) 40%,rgba(0,0,0,.6))"></div>
+      <div class="gh">
+        <div class="logo">BiOLiS<small>CLINIC</small></div>
+        <div class="right">
+          <div class="tel"><b>03-6262-2677</b><span>受付時間：10:00-19:00</span></div>
+          <a class="btn btn-ghost" href="#">予約</a>
+          <div style="width:22px"><i style="display:block;height:1.5px;background:#fff;margin:4px 0"></i><i style="display:block;height:1.5px;background:#fff;margin:4px 0"></i><i style="display:block;height:1.5px;background:#fff;margin:4px 0"></i></div>
+        </div>
+      </div>
+      <div style="position:absolute;left:56px;bottom:150px">
+        <p style="font-size:15px;letter-spacing:.14em">あなたの人生に、美と健康のパートナーを</p>
+        <div style="font-family:var(--serif);font-size:74px;letter-spacing:.02em;margin-top:14px">BiOLiS CLINIC</div>
+      </div>
+      <div style="position:absolute;right:44px;bottom:44px;background:rgba(190,163,102,.9);color:#2a2113;padding:12px 22px;font-size:13px;font-weight:700;text-align:center">開業キャンペーン<br><span style="font-size:17px">最大40%OFF ▶</span></div>
+    </div>
+  </div></div>
+</div>
+<div class="grid2">
+  <div class="box"><h4>いま伝わっていないこと</h4><ul>
+    <li>主力が何か（脂肪吸引・鼻・輪郭形成）</li><li>誰が執刀するか（医師5名の存在）</li><li>症例があること</li><li>八重洲・東京駅前という立地</li><li>日本初導入の機器</li>
+  </ul></div>
+  <div class="box"><h4>導線の問題</h4><ul>
+    <li>FV内のリンクがキャンペーンのみ（＝価格でしか入口がない）</li><li>「予約」はヘッダーの小さなボタン1つ</li><li>スクロールしないと施術に到達しない</li><li>スライダーが3枚とも内装CGで情報が増えない</li>
+  </ul></div>
+</div>
+
+<hr class="sep">
+
+<!-- ============ A案 ============ -->
+<h2 class="sec"><span class="n">PLAN A</span>3本柱ゲート型</h2>
+<p class="lead"><span class="tag rec">推奨</span><br>
+FVを「入口の分岐点」として設計します。背景は執刀シーンの動画（またはスチル）。画面下部に <b>脂肪吸引／鼻／輪郭形成（骨切り）</b> の3つのゲートを常時置き、スクロールせずに主力の特設ページへ直行できる状態にします。「何の医院か」「どこが強いか」「次にどこを押すか」をFVだけで完結させる構成です。</p>
+<div class="frame">
+  <div class="frame-bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="frame-url">biolisclinic.com</span></div>
+  <div class="scaler" id="scA"><div class="stage" id="stA">
+    <div class="fv">
+      <div class="bg" style="background-image:url(img/fv3.jpg);filter:saturate(.55) brightness(.55) contrast(1.05)"></div>
+      <div class="veil" style="background:linear-gradient(96deg,rgba(6,4,3,.93) 34%,rgba(6,4,3,.55) 72%,rgba(6,4,3,.72))"></div>
+      <div class="phnote" style="left:52px;top:96px">▲ 本番はここに「執刀中の映像（5秒ループ・無音）」を配置</div>
+
+      <div class="gh">
+        <div class="logo">BiOLiS<small>CLINIC</small></div>
+        <nav class="gnav">
+          <a href="#" class="on">脂肪吸引</a><a href="#">鼻</a><a href="#">輪郭形成</a>
+          <a href="#">施術メニュー</a><a href="#">症例</a><a href="#">医師</a><a href="#">料金</a><a href="#">アクセス</a>
+        </nav>
+        <div class="right">
+          <div class="tel"><b>03-6262-2677</b><span>10:00-19:00</span></div>
+          <a class="btn btn-line" href="#">LINEで相談</a>
+          <a class="btn btn-gold" href="#">WEB予約</a>
+        </div>
+      </div>
+
+      <div class="copy" style="position:absolute;left:56px;top:184px;max-width:660px">
+        <div class="place">東京駅 八重洲口 徒歩5分 ／ 美容外科・美容皮膚科・再生医療</div>
+        <h2 style="font-size:58px">輪郭は、<span style="color:var(--gold-l)">設計</span>できる。</h2>
+        <p class="sub">脂肪吸引・鼻・輪郭形成を主軸に、5名の医師が執刀。<br>10年先の顔立ちから逆算して、切る範囲と残す量を決めます。</p>
+        <div style="margin-top:26px;display:flex;gap:12px;align-items:center">
+          <span class="badge"><span class="k">日本初導入</span><span class="v">脂肪吸引機器 ◯◯◯◯ ※機種名・根拠を要確認</span></span>
+        </div>
+        <div style="margin-top:22px;display:flex;gap:10px">
+          <a class="btn btn-gold" style="padding:14px 26px;font-size:13.5px" href="#">日時を選んで予約する</a>
+          <a class="btn btn-ghost" style="padding:14px 22px" href="#">症例を見る（1,200件）</a>
+        </div>
+      </div>
+
+      <div class="cue">SCROLL</div>
+
+      <div class="gates">
+        <a class="gate" href="#"><span class="mark">主力</span>
+          <div class="en">LIPOSUCTION</div><div class="ja">脂肪吸引</div>
+          <div class="desc">顔・二の腕・腹部・太もも<br>日本初導入の機器で対応</div><div class="go">→</div></a>
+        <a class="gate" href="#">
+          <div class="en">RHINOPLASTY</div><div class="ja">鼻</div>
+          <div class="desc">鼻中隔延長・隆鼻・小鼻縮小<br>骨格から立体で設計</div><div class="go">→</div></a>
+        <a class="gate" href="#">
+          <div class="en">FACIAL CONTOURING</div><div class="ja">輪郭形成・骨切り</div>
+          <div class="desc">エラ・頬骨・顎<br>CT設計＋入院管理</div><div class="go">→</div></a>
+      </div>
+    </div>
+  </div></div>
+</div>
+<div class="grid2">
+  <div class="box"><h4>この案の狙い</h4><ul>
+    <li>主力3施術＝「特設ページ」への入口をFVに常設。ポータル・SNS・広告の受け皿としても同じ導線を使える</li>
+    <li>グローバルナビの先頭3つも同じ3施術。サイト全体で「何屋か」がぶれない</li>
+    <li>CTAを「予約」ではなく<b>「日時を選んで予約する」</b>に。次に何が起きるか分かると押される</li>
+    <li>キャンペーンをFVの主役から外す。価格だけで比べられる状態から抜ける（キャンペーンは第2スクリーンに置く）</li>
+  </ul></div>
+  <div class="box"><h4>必要な素材</h4><ul>
+    <li>執刀シーンの動画または写真（5秒ループ・無音／患者が特定されない画角・書面同意）</li>
+    <li>脂肪吸引機器の機種名と「日本初導入」の裏付け（メーカー公式発表など）</li>
+    <li>症例件数（集計期間つき。「1,200件」は仮の数字）</li>
+    <li>3本柱それぞれの特設ページ用の症例・料金・ダウンタイム情報</li>
+  </ul></div>
+</div>
+
+<hr class="sep">
+
+<!-- ============ B案 ============ -->
+<h2 class="sec"><span class="n">PLAN B</span>執刀医起点型</h2>
+<p class="lead"><span class="tag alt">併用候補</span><br>
+「医師の情報をリッチにしたい」というご要望を最短距離で形にする案。FVの時点で執刀医の顔・専門・症例数を出し、<b>施術ではなく人から入る</b>導線をつくります。骨切りのような高単価・長期検討の施術は、機器や価格より「誰が切るか」で決まるため相性が良い構成です。</p>
+<div class="frame">
+  <div class="frame-bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="frame-url">biolisclinic.com</span></div>
+  <div class="scaler" id="scB"><div class="stage" id="stB">
+    <div class="fv">
+      <div class="bg" style="background-image:url(img/fv2.jpg);filter:saturate(.5) brightness(.42)"></div>
+      <div class="veil" style="background:linear-gradient(100deg,rgba(8,6,5,.92) 30%,rgba(8,6,5,.35) 78%)"></div>
+      <div class="gh">
+        <div class="logo">BiOLiS<small>CLINIC</small></div>
+        <nav class="gnav"><a href="#">脂肪吸引</a><a href="#">鼻</a><a href="#">輪郭形成</a><a href="#">施術メニュー</a><a href="#">症例</a><a href="#" class="on">医師</a><a href="#">料金</a></nav>
+        <div class="right"><a class="btn btn-line" href="#">LINEで相談</a><a class="btn btn-gold" href="#">WEB予約</a></div>
+      </div>
+      <div class="copy" style="position:absolute;left:56px;top:198px;max-width:470px">
+        <div class="place">DOCTORS ／ 執刀医から選ぶ</div>
+        <h2 style="font-size:46px">執刀する医師を、<br>選べる。</h2>
+        <p class="sub">5名それぞれの資格・経歴・執刀した症例を公開。<br>指名でのご予約も可能です。</p>
+        <div style="margin-top:22px;display:flex;gap:10px">
+          <a class="btn btn-gold" style="padding:14px 22px" href="#">医師一覧を見る</a>
+          <a class="btn btn-ghost" style="padding:14px 18px" href="#">医師 × 症例で探す</a>
+        </div>
+      </div>
+      <div class="phnote" style="right:30px;top:96px">▲ 本番は医師5名の実写（同一ライティング・同一背景で撮り直し）</div>
+      <div class="docrow">
+        <div class="doccard"><div class="ph"><span>PHOTO</span></div><div class="tx"><b>佐々木 和司</b><i>VASER LIPO認定医</i><u>症例を見る ▸</u></div></div>
+        <div class="doccard"><div class="ph"><span>PHOTO</span></div><div class="tx"><b>今井 翔一</b><i>形成外科専門医</i><u>症例を見る ▸</u></div></div>
+        <div class="doccard"><div class="ph"><span>PHOTO</span></div><div class="tx"><b>鑓水 知公</b><i>麻酔科専門医</i><u>安全管理体制 ▸</u></div></div>
+        <div class="doccard"><div class="ph"><span>PHOTO</span></div><div class="tx"><b>金子 俊彦</b><i>日本美容外科学会</i><u>症例を見る ▸</u></div></div>
+        <div class="doccard"><div class="ph"><span>PHOTO</span></div><div class="tx"><b>金 喜燦</b><i>日本形成外科学会</i><u>症例を見る ▸</u></div></div>
+      </div>
+    </div>
+  </div></div>
+</div>
+<p class="cap">※ 医師名と肩書きは現行サイトの「クリニック・医師紹介」ページ（/about/）の掲載内容から引用しています。<b>各医師の担当施術</b>は未掲載のため、この案を採用する場合はご提供をお願いします。</p>
+
+<hr class="sep">
+
+<!-- ============ C案 ============ -->
+<h2 class="sec"><span class="n">PLAN C</span>予約起点型（Amazon型）</h2>
+<p class="lead"><span class="tag alt">A案への追加パーツとしても可</span><br>
+「予約のクリックが多い」を最も直接的に解く案。<b>FVの中で「施術を選ぶ→空き枠を見る」まで完結</b>させ、個人情報の入力は最後の1画面だけにします。現状は予約ボタンを押した先で〈注意事項5つにチェック〉→〈会員登録／ログイン〉の壁があり、<b>空き枠を見る前にアカウントを作らされる</b>状態です。ここが最大の離脱ポイントです。</p>
+<div class="frame">
+  <div class="frame-bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="frame-url">biolisclinic.com</span></div>
+  <div class="scaler" id="scC"><div class="stage" id="stC">
+    <div class="fv">
+      <div class="bg" style="background-image:url(img/fv3.jpg);filter:saturate(.5) brightness(.45)"></div>
+      <div class="veil" style="background:linear-gradient(90deg,rgba(8,6,5,.85) 35%,rgba(8,6,5,.5))"></div>
+      <div class="gh">
+        <div class="logo">BiOLiS<small>CLINIC</small></div>
+        <nav class="gnav"><a href="#">脂肪吸引</a><a href="#">鼻</a><a href="#">輪郭形成</a><a href="#">施術メニュー</a><a href="#">症例</a><a href="#">医師</a><a href="#">料金</a></nav>
+        <div class="right"><a class="btn btn-line" href="#">LINEで相談</a><a class="btn btn-gold" href="#">WEB予約</a></div>
+      </div>
+      <div class="copy" style="position:absolute;left:56px;top:214px;max-width:520px">
+        <div class="place">東京駅 八重洲口 徒歩5分</div>
+        <h2 style="font-size:48px">相談は、<br>3ステップで。</h2>
+        <p class="sub">会員登録は不要です。<br>気になる施術を選ぶと、その場で空き枠が出ます。</p>
+      </div>
+      <div class="bkw">
+        <h4>カウンセリングを予約する</h4>
+        <div class="steps"><div class="st on">① 施術を選ぶ</div><div class="st on">② 日時を選ぶ</div><div class="st">③ 連絡先</div></div>
+        <div class="chips">
+          <span class="chip on">脂肪吸引</span><span class="chip on">鼻</span><span class="chip">輪郭形成</span><span class="chip">目元</span><span class="chip">たるみ</span><span class="chip">その他 ＋</span>
+        </div>
+        <div style="font-size:10.5px;color:#7c7263;margin-top:8px">複数選択できます（現行システムは1つのみ選択可）</div>
+        <div class="cal">
+          <div class="h">月</div><div class="h">火</div><div class="h">水</div><div class="h">木</div><div class="h">金</div><div class="h">土</div><div class="h">日</div>
+          <div class="x">18</div><div class="o">19</div><div class="o">20</div><div class="x">21</div><div class="o">22</div><div class="sel">23</div><div class="x">24</div>
+          <div class="o">25</div><div class="o">26</div><div class="x">27</div><div class="o">28</div><div class="o">29</div><div class="o">30</div><div class="x">31</div>
+        </div>
+        <div class="note">8/23（土） 14:00〜 を選択中<br>※ 変更・キャンセルは48時間前まで／未成年の方は保護者同伴</div>
+        <a class="cta" href="#">この日時で進む（残り1画面）</a>
+      </div>
+    </div>
+  </div></div>
+</div>
+<div class="grid2">
+  <div class="box"><h4>Before：現在の予約フロー</h4><ul>
+    <li>① サイトの「予約」を押す</li><li>② 外部システムへ移動（見た目が変わる）</li><li>③ 注意事項5項目にチェック</li><li>④ <b>ログイン／新規会員登録の壁</b></li><li>⑤ メニューを1つだけ選ぶ</li><li>⑥ 日時を選ぶ</li><li>⑦ 確定</li>
+  </ul></div>
+  <div class="box"><h4>After：目標フロー</h4><ul>
+    <li>① 施術ページの「この施術で予約」を押す<br>（＝施術が選択済みの状態で着地）</li><li>② 空き枠から日時を選ぶ</li><li>③ 名前・連絡先・相談内容を入力して確定</li><li>会員登録は<b>予約完了後に任意</b>で案内</li>
+  </ul></div>
+</div>
+<p class="cap">※ 実現方法は予約システム（ACUSIS Cloud）側の仕様に依存します。詳細は提案書「先方にご確認いただきたいこと」を参照。</p>
+
+<hr class="sep">
+
+<!-- ============ SP ============ -->
+<h2 class="sec"><span class="n">SP</span>スマートフォン版（A案）</h2>
+<p class="lead">美容クリニックの流入は8〜9割がスマートフォンです。PC版よりもこちらが本番。</p>
+<div class="spwrap">
+  <div class="phone"><div class="spfv">
+    <div class="bg" style="position:absolute;inset:0;background:url(img/fv3.jpg) center/cover;filter:saturate(.55) brightness(.5)"></div>
+    <div class="veil" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.25) 35%,rgba(0,0,0,.85))"></div>
+    <div class="sph"><div class="logo">BiOLiS<small>CLINIC</small></div><div class="mn"><i></i><i></i><i></i></div></div>
+    <div style="position:absolute;left:20px;right:20px;top:120px">
+      <div style="font-size:9.5px;letter-spacing:.18em;color:var(--gold-l)">東京駅 八重洲口 徒歩5分</div>
+      <div style="font-family:var(--serif);font-size:34px;line-height:1.3;margin-top:10px">輪郭は、<br><span style="color:var(--gold-l)">設計</span>できる。</div>
+      <p style="font-size:11.5px;line-height:1.9;color:#ddd5c8;margin-top:12px">脂肪吸引・鼻・輪郭形成を主軸に、<br>5名の医師が執刀します。</p>
+      <div style="margin-top:14px;display:inline-flex;align-items:center;gap:7px;border:1px solid var(--gold);padding:6px 10px">
+        <span style="font-size:8px;letter-spacing:.14em;background:var(--gold);color:#241a0b;padding:2px 5px;font-weight:800">日本初導入</span>
+        <span style="font-size:10px;color:var(--gold-l)">脂肪吸引機器 ◯◯◯◯</span>
+      </div>
+    </div>
+    <div class="spgates">
+      <a class="spgate" href="#"><div class="en">LIPO</div><div class="ja">脂肪吸引</div></a>
+      <a class="spgate" href="#"><div class="en">NOSE</div><div class="ja">鼻</div></a>
+      <a class="spgate" href="#"><div class="en">CONTOUR</div><div class="ja">輪郭形成</div></a>
+    </div>
+    <div class="spbar"><a class="b1" href="#">症例</a><a class="b2" href="#">LINE</a><a class="b3" href="#">日時を選んで予約</a></div>
+  </div></div>
+  <div class="notes">
+    <h4>スマホ版で必ず入れる要素</h4>
+    <ol>
+      <li><b>画面下の固定バー</b>：「症例 ／ LINE ／ 予約」。全ページで常時表示し、スクロール位置に関係なく1タップで予約に入れる状態にする</li>
+      <li><b>3本柱ゲート</b>：親指の届く下部に配置。ハンバーガーメニューを開かせない</li>
+      <li><b>LINEを予約と同格に</b>：いきなり予約に踏み切れない層の受け皿。友だち追加は再来促進・キャンペーン告知の資産にもなる</li>
+      <li><b>電話番号は下部に集約</b>：スマホでは誤タップが多く、FV上部の電話は予約導線を分散させる</li>
+      <li><b>1画面目でスクロールを促す</b>：キャンペーンバナーで画面を塞がない（現行は右下に常時表示）</li>
+    </ol>
+  </div>
+</div>
+
+<hr class="sep">
+<h2 class="sec"><span class="n">NEXT</span>この後の進め方</h2>
+<div class="grid2">
+  <div class="box"><h4>ご判断いただきたいこと</h4><ul>
+    <li>FVの方向性：A案ベースで進めてよいか（B・Cの要素をどこまで足すか）</li>
+    <li>執刀シーンの撮影可否と時期</li>
+    <li>脂肪吸引機器の機種名と「日本初導入」の裏付け</li>
+    <li>3本柱の優先順位（どれから特設ページを作るか）</li>
+  </ul></div>
+  <div class="box"><h4>決まり次第こちらで進めること</h4><ul>
+    <li>FV確定版のデザイン（PC／SP）</li>
+    <li>トップページ全体のワイヤーフレーム</li>
+    <li>主力3施術の特設ページ構成案</li>
+    <li>予約システム側の仕様確認（ACUSISベンダーへの質問票）</li>
+  </ul></div>
+</div>
+
+</div>
+
+<script>
+(function(){
+  function fit(){
+    document.querySelectorAll('.scaler').forEach(function(sc){
+      var st=sc.querySelector('.stage'); if(!st) return;
+      var s=sc.clientWidth/1280;
+      st.style.transform='scale('+s+')';
+      sc.style.height=(st.getBoundingClientRect().height)+'px';
+    });
+  }
+  fit(); window.addEventListener('resize',fit); setTimeout(fit,150);
+})();
+</script>
+
+</body>
+</html>

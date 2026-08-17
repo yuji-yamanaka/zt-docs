@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>BIOLIS CLINIC様 サイトリニューアルご提案 | ZOEN-TECH</title>
+</head>
+<body>
+<style>
+:root{
+  --main:#009aa2; --main-l:#e6f6f7; --main-d:#007a80;
+  --text:#2c3230; --sub:#6c7370; --bg:#fff; --bg2:#f7faf9;
+  --line:#e2e6e5; --warn:#c2410c; --warn-bg:#fff6f0; --ok:#0f766e;
+  --gold:#a5842f;
+  --serif:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif;
+  --sans:'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic','Noto Sans JP',sans-serif;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --text:#e6ebe9; --sub:#9aa4a1; --bg:#121615; --bg2:#181d1c; --line:#2b3332;
+  --main-l:#0d2b2c; --warn-bg:#2a1a12; --gold:#d5b25a;
+}}
+:root[data-theme="dark"]{
+  --text:#e6ebe9; --sub:#9aa4a1; --bg:#121615; --bg2:#181d1c; --line:#2b3332;
+  --main-l:#0d2b2c; --warn-bg:#2a1a12; --gold:#d5b25a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:var(--text);background:var(--bg);line-height:1.85;font-size:14px;-webkit-font-smoothing:antialiased}
+.hero{background:var(--main);color:#fff;padding:44px 0 40px}
+.in{max-width:1000px;margin:0 auto;padding:0 24px}
+.hero .co{font-size:11px;letter-spacing:.24em;opacity:.85;font-weight:600}
+.hero h1{font-family:var(--serif);font-size:29px;line-height:1.45;margin-top:10px;font-weight:600}
+.hero .meta{font-size:12px;opacity:.9;margin-top:12px}
+
+.tocbox{background:var(--bg2);border-bottom:1px solid var(--line);padding:20px 0}
+.toc{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px}
+.toc a{color:var(--main-d);text-decoration:none;border-bottom:1px dotted var(--main)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .toc a{color:#5ecfd4}}
+:root[data-theme="dark"] .toc a{color:#5ecfd4}
+
+section{padding:52px 0 0}
+h2{font-family:var(--serif);font-size:23px;font-weight:600;padding-bottom:12px;border-bottom:2px solid var(--main);margin-bottom:6px;display:flex;align-items:baseline;gap:12px}
+h2 .n{font-family:var(--sans);font-size:11px;letter-spacing:.14em;background:var(--main);color:#fff;padding:4px 9px;border-radius:3px;font-weight:700;flex:none}
+h3{font-size:16px;font-weight:700;margin:32px 0 10px;padding-left:11px;border-left:4px solid var(--main)}
+h4{font-size:13.5px;font-weight:700;margin:20px 0 6px}
+p{margin-bottom:12px}
+.lead{color:var(--sub);font-size:13.5px;margin:14px 0 4px}
+ul,ol{padding-left:1.4em;margin-bottom:14px}
+li{margin-bottom:6px}
+strong{color:var(--main-d);font-weight:700}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) strong{color:#5ecfd4}}
+:root[data-theme="dark"] strong{color:#5ecfd4}
+
+table{width:100%;border-collapse:collapse;font-size:13px;margin:14px 0 18px;background:var(--bg)}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--bg2);font-weight:700;font-size:12.5px;white-space:nowrap}
+td.c,th.c{text-align:center;white-space:nowrap}
+
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;margin:14px 0}
+.card h4{margin-top:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:780px){.grid2,.grid3{grid-template-columns:1fr}}
+
+.issue{border:1px solid var(--line);border-left:5px solid var(--warn);border-radius:8px;padding:16px 20px;margin:12px 0;background:var(--bg)}
+.issue.b{border-left-color:var(--gold)}
+.issue .hd{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.issue .sev{font-size:10.5px;font-weight:800;letter-spacing:.08em;padding:2px 8px;border-radius:3px;background:var(--warn);color:#fff;flex:none}
+.issue.b .sev{background:var(--gold);color:#231c07}
+.issue .ti{font-size:15px;font-weight:700}
+.issue .ev{font-size:12px;color:var(--sub);background:var(--bg2);border-radius:6px;padding:9px 12px;margin-top:9px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;word-break:break-all;line-height:1.7}
+.issue .so{font-size:12.5px;margin-top:9px}
+.issue .so b{color:var(--main-d)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .issue .so b{color:#5ecfd4}}
+:root[data-theme="dark"] .issue .so b{color:#5ecfd4}
+
+.tree{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:2;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px;overflow-x:auto;white-space:pre}
+.tree b{color:var(--main-d);font-weight:700}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tree b{color:#5ecfd4}}
+:root[data-theme="dark"] .tree b{color:#5ecfd4}
+.tree i{font-style:normal;color:var(--sub)}
+
+.flow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+@media(max-width:780px){.flow{grid-template-columns:1fr}}
+.flowbox{border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.flowbox .h{padding:10px 16px;font-size:13px;font-weight:700;color:#fff}
+.flowbox.bf .h{background:#94a3b8}
+.flowbox.af .h{background:var(--main)}
+.flowbox ol{margin:0;padding:16px 18px 16px 34px;font-size:13px}
+.flowbox ol li{margin-bottom:8px}
+.flowbox .stop{background:var(--warn-bg);border:1px solid #f0c5a8;color:var(--warn);border-radius:5px;padding:7px 10px;font-weight:700;font-size:12.5px;margin:4px 0 4px -18px;list-style:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .flowbox .stop{border-color:#5c3a22;color:#f0a878}}
+:root[data-theme="dark"] .flowbox .stop{border-color:#5c3a22;color:#f0a878}
+
+.axis{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:20px;margin:14px 0}
+@media(max-width:780px){.axis{grid-template-columns:1fr}}
+.axis .nd{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:12px 14px;text-align:center;font-size:13px;font-weight:700}
+.axis .nd small{display:block;font-weight:400;color:var(--sub);font-size:11px;margin-top:3px}
+.axis .ar{text-align:center;color:var(--main);font-size:18px}
+
+.q{border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;margin:12px 0;background:var(--bg)}
+.q .qn{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;background:var(--main);color:#fff;padding:3px 9px;border-radius:3px;margin-bottom:8px}
+.q h4{margin:0 0 6px;font-size:15px}
+.q .why{font-size:12.5px;color:var(--sub);margin-bottom:10px}
+.q .opts{font-size:13px}
+.q .opts b{color:var(--main-d)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .q .opts b{color:#5ecfd4}}
+:root[data-theme="dark"] .q .opts b{color:#5ecfd4}
+.rec{display:inline-block;font-size:10.5px;font-weight:800;background:var(--main-l);color:var(--main-d);padding:2px 8px;border-radius:3px;margin-left:6px}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .rec{color:#5ecfd4}}
+:root[data-theme="dark"] .rec{color:#5ecfd4}
+
+.linkbtn{display:inline-flex;align-items:center;gap:8px;background:var(--main);color:#fff;text-decoration:none;font-weight:700;font-size:13.5px;padding:13px 24px;border-radius:6px;margin:6px 0}
+.note{font-size:12px;color:var(--sub);margin-top:8px}
+footer{margin-top:72px;background:var(--bg2);border-top:1px solid var(--line);padding:28px 0;font-size:12px;color:var(--sub)}
+.pri{font-weight:800;font-size:11px;padding:2px 7px;border-radius:3px}
+.pri.m{background:#0f766e;color:#fff}
+.pri.s{background:#0284c7;color:#fff}
+.pri.c{background:#94a3b8;color:#fff}
+</style>
+
+<div class="hero"><div class="in">
+  <div class="co">ZOEN-TECH ／ WEB SITE RENEWAL</div>
+  <h1>BIOLIS CLINIC 様<br>サイトリニューアル ご提案</h1>
+  <div class="meta">ページ構成・機能・ファーストビュー方針｜2026年8月18日</div>
+</div></div>
+
+<div class="tocbox"><div class="in"><div class="toc">
+  <a href="#s0">0. 結論</a><a href="#s1">1. 現状診断</a><a href="#s2">2. 基本方針</a><a href="#s3">3. ページ構成</a>
+  <a href="#s4">4. 主要ページの型</a><a href="#s5">5. 機能一覧</a><a href="#s6">6. 予約導線</a><a href="#s7">7. 医師×症例の2軸</a>
+  <a href="#s8">8. 広告規制対応</a><a href="#s9">9. ご判断いただきたいこと</a><a href="#s10">10. 費用プラン</a><a href="#s11">11. 進め方</a>
+</div></div></div>
+
+<div class="in">
+
+<!-- 0 -->
+<section id="s0">
+<h2><span class="n">0</span>結論</h2>
+<div class="card">
+<p style="margin-bottom:14px"><strong>現行サイトは「見た目」ではなく「構造」に問題があります。</strong>内装CGの世界観は完成度が高く、そのまま活かせます。作り直すべきは、①主力施術の受け皿、②医師と症例、③予約導線の3点です。</p>
+<table>
+<tr><th style="width:130px">課題</th><th>今の状態</th><th style="width:38%">リニューアル後</th></tr>
+<tr><td><b>主力施術</b></td><td>脂肪吸引・鼻・骨切りを売る器がない（骨切りは分類そのものが存在しない）</td><td>3施術それぞれに<b>特設ページ</b>を新設。トップの入口も3本柱で統一</td></tr>
+<tr><td><b>医師</b></td><td>略歴・資格は /about/ に掲載済みだが1ページに埋もれている。個別ページのURLは存在するが中身が入っておらず、施術・症例とも繋がっていない</td><td>既存URLを<b>医師詳細ページ</b>として実装し、<b>症例・施術と相互リンク</b>。指名予約まで繋げる</td></tr>
+<tr><td><b>症例</b></td><td>デモデータのまま公開。医師との紐付けなし</td><td>施術軸・医師軸の<b>2方向</b>から辿れる症例データベースに</td></tr>
+<tr><td><b>予約</b></td><td>空き枠を見る前に<b>会員登録</b>を求められる（6画面）</td><td>施術選択済みで着地 →日時 →連絡先の<b>3ステップ</b>。会員登録は完了後に任意</td></tr>
+</table>
+<p style="margin-bottom:0" class="note">※ リニューアルとは別に、<b>今週中に手を打つべき事項</b>があります（1章 重大度A）。</p>
+</div>
+<p class="note">本資料はページ構成・機能・費用プランのご提案です。デザイン（ファーストビュー案）は方向性の参考として <a href="fv-design.html" style="color:var(--main-d)">別紙</a> に添付していますが、構成のご合意をいただいてから詰めます。</p>
+</section>
+
+<!-- 1 -->
+<section id="s1">
+<h2><span class="n">1</span>現状診断</h2>
+<p class="lead">2026年8月18日時点で、公開されているサイト・サイトマップ・予約システムを実際に開いて確認した結果です。</p>
+
+<h3>重大度A：いま公開されていて実害が出ているもの</h3>
+
+<div class="issue">
+  <div class="hd"><span class="sev">A-1</span><span class="ti">制作時のデモデータが本番公開されたまま</span></div>
+  <p><b>トップページ（biolisclinic.com）自体はきれいです。</b>デモデータが残っているのは、トップから直接は辿りにくい下層ページです。ただし全て <code>sitemap.xml</code> に登録済みで検索エンジンに提出されているため、検索からは普通に入れます。</p>
+  <p style="margin-bottom:4px"><b>確認方法：</b>下記URLをブラウザで開けば、そのまま見えます（ログイン不要）。</p>
+  <table style="margin-top:8px">
+  <tr><th style="width:26%">どこで見えるか</th><th style="width:32%">確認するURL</th><th>見える内容</th></tr>
+  <tr><td><b>症例</b>（全20件すべて）</td><td><code>/case/</code><br><span style="font-size:11px;color:var(--sub)">3ページ分</span></td><td>「親ターム美容外科（施術選択1:二重埋没法）（施術選択2:美容外科-目頭切開）」等。<b>詳細を開くと「施術名の詳細が入ります」「副作用・リスクの詳細が入ります」</b></td></tr>
+  <tr><td><b>コラム</b>（全20件すべて）</td><td><code>/column/</code></td><td>「親ターム:ヒアルロン酸注入/コラム監修者<b>スピカ花子</b>(施術選択1:…)」。実記事も「ヒアルロン酸注入って安全なの？」が同一タイトルで重複</td></tr>
+  <tr><td><b>お知らせ</b>（全3件）</td><td><code>/news/</code></td><td>「年末年始の営業時間について」「夏のモニターキャンペーン実施中！」「BiOLiS CLINIC GRAND OPEN」<br>いずれも投稿日が <b>2026.04.23</b>（＝一括投入されたダミー）</td></tr>
+  <tr><td><b>採用</b></td><td><code>/recruit/</code><br><code>/recruit/doctor/</code></td><td>本文が「テキストテキストテキスト…」のまま（1ページに36箇所）</td></tr>
+  <tr><td><b>壊れた15本のURL</b><br><span style="font-size:11px;color:var(--sub)">A-2参照</span></td><td><code>/doctor/sasaki/</code><br><code>/menu-cat/surgery/</code> ほか</td><td>トップページの旧バージョンが表示され、<b>「キャンペーン名が入ります1〜5」「アイキャッチなし」「テキストテキスト…」</b>が並ぶ</td></tr>
+  <tr><td><b>キャンペーン投稿6件</b></td><td><code>/campaign/キャンペーン名が入ります1/</code> 等</td><td>一覧（<code>/campaign/</code>）には開業記念キャンペーンのLPが入っているため表示されないが、<b>個別URLは生きていて sitemap にも登録済み</b></td></tr>
+  </table>
+  <div class="so"><b>とくに危険なのは症例です。</b>症例詳細の「副作用・リスク」欄がダミー文のまま公開されており、これは医療広告ガイドラインの限定解除要件（治療内容・費用・リスク・自由診療である旨）を満たしていない状態にあたります（8章）。<br>
+  <b>対応：</b>リニューアルを待たず今週中に、症例20件・コラム20件・お知らせ3件・キャンペーン6件を非公開化し、sitemapから除外します。</div>
+</div>
+
+<div class="issue">
+  <div class="hd"><span class="sev">A-2</span><span class="ti">15本のURLがトップページの複製を返している（医師5＋施術カテゴリ10）</span></div>
+  <p>医師5名の略歴・資格・顔写真・SNSは <b>「クリニック・医師紹介」ページ（/about/）内にまとめて掲載済み</b>です。情報そのものは揃っています。<br>
+  問題は、<b>専用の表示テンプレートが用意されていないURLが15本あり、すべて開くとトップページ（の旧バージョン）が表示される</b>点です。中身が同一のページが15本並ぶため、検索エンジンからは重複コンテンツとして扱われます。しかもこの旧バージョンにはA-1のデモデータが残っています。</p>
+  <div class="ev">
+    ・医師5本：/doctor/sasaki/　/doctor/yarimizu/　/doctor/金-喜燦/　/doctor/金子俊彦/　/doctor/今井翔-一/<br>
+    ・施術カテゴリ10本：/menu-cat/surgery/　/menu-cat/dermatology/　/menu-cat/regenerative/　/menu-cat/problem/　および各サブカテゴリ<br>
+    　→ いずれも <code>&lt;body class="pg_top"&gt;</code>（＝トップページのテンプレートで描画されている）<br>
+    ・/doctor/ → /wp-content/uploads/2025/08/doctor.png へ301転送（医師一覧ページが存在しない）<br>
+    ・サイト内からこの15本へのリンクは0本。sitemap.xml にだけ登録されている
+  </div>
+  <div class="so"><b>確認方法：</b>ブラウザで <code>biolisclinic.com/doctor/sasaki/</code> を開いてください。タイトルは「佐々木 和司」なのに、中身がトップページになっています。<br>
+  <b>対応：</b>医師5本は、そのまま<b>医師詳細ページとして中身を入れる器</b>に使います（4章）。施術カテゴリ10本は、メニュー一覧のカテゴリページとして正しく実装します（現在ナビは <code>/menu/?term=美容外科</code> というパラメータ付きURLを使っており、本来のカテゴリURLが機能していません）。</div>
+</div>
+
+<div class="card" style="border-color:var(--main);border-width:2px">
+<h4>あわせて確認できたこと：医師の資格が、そのまま3本柱の裏付けになっている</h4>
+<p>/about/ の掲載内容を確認したところ、<b>主力3施術それぞれに対応する専門資格を持つ医師が既に揃っていました</b>。体験談や最上級表現が使えない医療広告において、これは数少ない使える訴求材料です。にもかかわらず、現在は略歴の羅列として1ページに埋もれています。</p>
+<table style="margin-bottom:0">
+<tr><th style="width:22%">医師</th><th style="width:38%">掲載済みの資格・所属学会（抜粋）</th><th>結びつく訴求</th></tr>
+<tr><td>佐々木 和司<br><span style="font-size:11px;color:var(--sub)">技術指導医</span></td><td>日本美容外科学会専門医／<b>VASER LIPO認定医</b>／CRF（コンデンスリッチファット）認定医／日本再生医療学会</td><td><b>脂肪吸引</b>と<b>再生医療</b>の両方に直結。特設ページの中心に置ける</td></tr>
+<tr><td>今井 翔一</td><td>日本形成外科学会認定 形成外科専門医／<b>日本頭蓋顎顔面外科学会</b>／日本美容外科学会</td><td><b>輪郭形成・骨切り</b>の裏付け。鼻の設計にも効く</td></tr>
+<tr><td>鑓水 知公</td><td><b>麻酔科専門医</b>／麻酔科標榜医／日本心臓血管麻酔学会</td><td>骨切り・脂肪吸引の<b>全身麻酔と安全体制</b>。他院との差がつきやすい</td></tr>
+<tr><td>金子 俊彦</td><td>麻酔科標榜医／日本美容外科学会（JSAS）</td><td>大手美容外科4院での院長歴。集患力・症例数</td></tr>
+<tr><td>金 喜燦</td><td>日本形成外科学会／日本抗加齢医学会</td><td>形成外科ベース＋アンチエイジング領域</td></tr>
+</table>
+</div>
+
+<div class="issue">
+  <div class="hd"><span class="sev">A-3</span><span class="ti">空き枠を見る前に会員登録を求められる</span></div>
+  <p style="margin-bottom:0">予約ボタンから先を実際に辿ったところ、日時カレンダーに到達する前に<b>ログイン／新規会員登録の画面</b>が挟まっていました。「クリックが多い」の正体はここです。加えて、注意事項に<b>「ご希望のご相談内容を1つ選択ください」</b>とあり、複数施術を検討している方が選べない仕様になっています。</p>
+  <div class="ev">
+    サイトの予約ボタン → 予約前確認事項（チェックボックス5項目） → <b>ログイン／新規会員登録</b> → メニュー選択 → 日時選択 → 確定
+  </div>
+  <div class="so"><b>対応：</b>6章で3つの実現案をご提示します。予約システム側の仕様確認が必要です。</div>
+</div>
+
+<h3>重大度B：成長の天井になる設計</h3>
+
+<div class="issue b">
+  <div class="hd"><span class="sev">B-1</span><span class="ti">URLが連番のみで、何のページか分からない</span></div>
+  <div class="ev">/menu/2236/　/case/2091/　/price/2207/　/column/2065/</div>
+  <div class="so">施術名がURLに入らないため検索評価が乗りにくく、SNSやLINEで共有されたときにも中身が伝わりません。<b>英字スラッグ（例：/menu/surgery/liposuction-face/）に変更</b>します。</div>
+</div>
+
+<div class="issue b">
+  <div class="hd"><span class="sev">B-2</span><span class="ti">カテゴリURLが日本語</span></div>
+  <div class="ev">/menu-cat/surgery/脂肪吸引/　→ 共有時：/menu-cat/surgery/%E8%84%82%E8%82%AA%E5%90%B8%E5%BC%95/</div>
+  <div class="so">SNS・広告・ポータルからの流入が主戦場になる以上、共有に耐えるURLに直します。</div>
+</div>
+
+<div class="issue b">
+  <div class="hd"><span class="sev">B-3</span><span class="ti">主力3施術を売る「器」がない</span></div>
+  <div class="so"><b>骨切り（輪郭形成）の分類そのものが存在しません。</b>脂肪吸引も「顔の脂肪吸引」のみで、二の腕・腹部・太ももがメニューにありません。鼻は分類はありますが個別ページが薄い状態です。今のサイトは「目元・二重が主力のクリニック」に見えています。</div>
+</div>
+
+<div class="issue b">
+  <div class="hd"><span class="sev">B-4</span><span class="ti">症例と医師が紐づいていない／トップの入口がキャンペーンだけ</span></div>
+  <div class="so">症例に執刀医の情報がなく、「誰が切ったか」を辿れません。またトップのファーストビューから押せるリンクは<b>「開業キャンペーン 最大40%OFF」のみ</b>で、価格でしか比較されない入口になっています。</div>
+</div>
+
+<h4>補足：活かせていない資産</h4>
+<ul>
+<li><b>医師5名の略歴・資格</b>（上記のとおり）。素材は既にあり、置き場所と繋ぎ方を変えるだけで訴求力が大きく変わります。今回のリニューアルで最も費用対効果が高い部分です。</li>
+<li>英語ページ（/en/）・中国語ページ（/cn/）が存在します。<b>東京駅八重洲口という立地</b>は美容医療のインバウンドと相性が良く、後から作るより既にあるほうが有利です。中身の整備は検討に値します。</li>
+<li>厚生労働省への第二種・第三種再生医療等提供計画の届出、iPS細胞ラボの内製化は、体験談や最上級表現が使えない医療広告において<b>数少ない客観的な訴求材料</b>です。今はトップの中ほどに置かれていますが、もっと前に出せます。</li>
+</ul>
+</section>
+
+<!-- 2 -->
+<section id="s2">
+<h2><span class="n">2</span>リニューアルの基本方針</h2>
+<div class="grid3">
+  <div class="card"><h4>方針1｜3本柱を独立させる</h4><p style="margin-bottom:0">脂肪吸引・鼻・輪郭形成を、メニューの一項目ではなく<b>それぞれ独立した特設ページ</b>にします。ポータル・SNS・広告の着地先もすべてここに集約し、「何のクリニックか」をサイト全体で一貫させます。</p></div>
+  <div class="card"><h4>方針2｜医師と症例を資産にする</h4><p style="margin-bottom:0">症例1件ごとに<b>施術タグと執刀医タグ</b>を必ず付ける運用にします。これだけで「施術から探す」「医師から探す」の両方のページが自動で増え、更新するほどサイトが強くなる構造になります。</p></div>
+  <div class="card"><h4>方針3｜予約を「日時の確保」に変える</h4><p style="margin-bottom:0">「相談してみる」ではなく<b>「◯月◯日◯時を押さえる」</b>行為に変えます。何を選ぶか・あと何ステップかが常に見える状態にし、会員登録は予約完了後に回します。</p></div>
+</div>
+</section>
+
+<!-- 3 -->
+<section id="s3">
+<h2><span class="n">3</span>ページ構成（サイトマップ）</h2>
+<p class="lead">■＝新設　□＝既存を再構築　太字＝集客の受け皿になるページ</p>
+<div class="tree">TOP
+│
+├─ <b>■ 脂肪吸引  /liposuction/</b>            <i>特設ページ（主力・件数をつくる）</i>
+├─ <b>■ 鼻  /nose/</b>                          <i>特設ページ（高単価・症例で売る）</i>
+├─ <b>■ 輪郭形成・骨切り  /contouring/</b>       <i>特設ページ（最高単価・医師で売る）</i>
+│
+├─ □ 施術メニュー  /menu/
+│   ├─ 美容外科        /menu/surgery/
+│   ├─ 美容皮膚科      /menu/dermatology/
+│   ├─ 再生医療        /menu/regenerative/
+│   ├─ お悩みから探す  /concern/          <i>目のクマ／たるみ／痩身 など</i>
+│   └─ <b>施術詳細  /menu/surgery/liposuction-arm/ 等</b>  <i>英字スラッグに変更</i>
+│
+├─ <b>□ 症例  /case/</b>                        <i>施術・医師・性別・年代・費用帯で絞込</i>
+│   └─ 症例詳細  /case/12345/
+│
+├─ <b>■ 医師  /doctor/</b>                      <i>一覧（新設）</i>
+│   └─ <b>■ 医師詳細  /doctor/sasaki/ 等</b>      <i>経歴・担当施術・症例・指名予約</i>
+│
+├─ ■ 設備・機器  /equipment/                <i>日本初導入の脂肪吸引機はここが本拠地</i>
+├─ □ 料金  /price/                          <i>施術詳細と同じデータを参照（二重管理をなくす）</i>
+├─ □ 当院について  /about/                  <i>再生医療の届出・ラボ内製化を前面に</i>
+│
+├─ □ キャンペーン  /campaign/               <i>期間で自動出し分け</i>
+├─ □ コラム  /column/                       <i>医師監修つき</i>
+├─ □ お知らせ  /news/
+├─ □ よくある質問  /faq/
+├─ □ アクセス  /access/                     <i>東京駅八重洲口からの徒歩ルート写真</i>
+├─ □ 採用  /recruit/                        <i>医師・看護師・カウンセラー</i>
+├─ ■ 予約  /reserve/                        <i>6章参照</i>
+└─ □ English  /en/  ／  中文  /cn/</div>
+
+<div class="card">
+<h4>グローバルナビゲーション（全ページ共通）</h4>
+<p style="margin-bottom:0"><b>脂肪吸引 ／ 鼻 ／ 輪郭形成 ／ 施術メニュー ／ 症例 ／ 医師 ／ 料金 ／ アクセス</b>　＋　右端に <b>LINEで相談</b> と <b>WEB予約</b>。<br>
+先頭3つを主力施術にすることで、どのページからでも1クリックで主力に戻れます。スマートフォンでは画面下部に「症例／LINE／予約」の固定バーを常時表示します。</p>
+</div>
+</section>
+
+<!-- 4 -->
+<section id="s4">
+<h2><span class="n">4</span>主要ページの型</h2>
+
+<h3>施術詳細ページ（全施術共通の型）</h3>
+<table>
+<tr><th class="c" style="width:52px">順</th><th style="width:32%">ブロック</th><th>入れるもの</th></tr>
+<tr><td class="c">1</td><td>施術名と一行定義</td><td>「何をする施術か」を専門用語なしで1文</td></tr>
+<tr><td class="c">2</td><td>こんな方に</td><td>適応。逆に向かない方も書く（信頼になる）</td></tr>
+<tr><td class="c">3</td><td>施術の流れ</td><td>カウンセリング〜当日〜術後◯日〜完成まで</td></tr>
+<tr><td class="c">4</td><td>ダウンタイムの目安</td><td>腫れ・内出血・痛み・仕事復帰の目安を表で</td></tr>
+<tr><td class="c">5</td><td>料金</td><td>税込総額。麻酔・薬・アフターケア・再診が含まれるか明記</td></tr>
+<tr><td class="c">6</td><td>リスク・副作用</td><td><b>「受けた結果起こりうる症状」</b>を症状名で（8章）</td></tr>
+<tr><td class="c">7</td><td><b>この施術の症例</b></td><td>症例DBから自動表示。もっと見る→症例一覧（施術で絞込済）</td></tr>
+<tr><td class="c">8</td><td><b>この施術を担当する医師</b></td><td>医師DBから自動表示。→医師詳細へ</td></tr>
+<tr><td class="c">9</td><td>よくある質問</td><td>構造化データを付与し検索結果に出やすくする</td></tr>
+<tr><td class="c">10</td><td><b>この施術で予約する</b></td><td>施術が選択済みの状態で予約画面へ（6章）</td></tr>
+</table>
+
+<h3>特設ページ（脂肪吸引・鼻・輪郭形成）</h3>
+<p>上記の型に加えて、以下を持たせます。実質的にランディングページとして単独で成立させ、広告・ポータル・SNSの着地先にします。</p>
+<div class="grid2">
+<div class="card"><h4>共通で足すもの</h4><ul style="margin-bottom:0">
+<li>術式・機器の比較表（どれを選ぶべきかが分かる）</li><li>部位の組み合わせと費用シミュレーション</li><li>症例を大量に（この施術だけで数十件）</li><li>担当医師の「執刀の考え方」インタビュー</li><li>術後の通院スケジュールと実務（仕事・予定の調整）</li>
+</ul></div>
+<div class="card"><h4>施術ごとの主役</h4><ul style="margin-bottom:0">
+<li><b>脂肪吸引</b>：日本初導入の機器。何がどう違うのかを1枚で</li><li><b>鼻</b>：症例の量。骨格から設計するという考え方</li><li><b>輪郭形成・骨切り</b>：執刀医。CT設計・入院管理・安全体制</li>
+</ul></div>
+</div>
+
+<h3>医師詳細ページ</h3>
+<p>既存の <code>/doctor/</code> 系URLに中身を入れる形で実装します。<span style="color:var(--sub)">■＝新しく用意が必要／□＝/about/ から移せる</span></p>
+<table>
+<tr><th class="c" style="width:52px">区分</th><th style="width:30%">要素</th><th>内容</th></tr>
+<tr><td class="c">□</td><td>略歴・資格・所属学会</td><td>/about/ の掲載内容をそのまま移設。加えて<b>3本柱に関わる資格を上部に強調表示</b>（VASER LIPO認定医、形成外科専門医、麻酔科専門医など）</td></tr>
+<tr><td class="c">□</td><td>SNSリンク</td><td>Instagram・X。既に3名分あり。SNS運用を始めるなら医師個人アカウントとの相互送客の起点になる</td></tr>
+<tr><td class="c">■</td><td>顔写真の統一</td><td>現在は撮影時期・トリミングがばらばらです。<b>5名を同一ライティング・同一背景で撮り直す</b>と一気に見え方が変わります</td></tr>
+<tr><td class="c">■</td><td><b>担当施術</b></td><td>この医師が対応する施術一覧（→各施術詳細へリンク）。7章の2軸の要</td></tr>
+<tr><td class="c">■</td><td><b>執刀の考え方</b></td><td>インタビュー形式。略歴の羅列では他院と差がつきません。ここが指名を生みます</td></tr>
+<tr><td class="c">■</td><td><b>この医師が執刀した症例</b></td><td>症例DBから自動表示</td></tr>
+<tr><td class="c">■</td><td>指名予約ボタン</td><td>この医師を指定した状態で予約へ</td></tr>
+<tr><td class="c">■</td><td>監修コラム一覧</td><td>コラムの監修者を医師に紐付ける（現在は「スピカ太郎」等のデモデータ）</td></tr>
+</table>
+</section>
+
+<!-- 5 -->
+<section id="s5">
+<h2><span class="n">5</span>機能一覧</h2>
+<table>
+<tr><th class="c" style="width:70px">優先</th><th style="width:26%">機能</th><th>内容と狙い</th></tr>
+<tr><td class="c"><span class="pri m">必須</span></td><td>症例検索</td><td>施術 × 医師 × 性別 × 年代 × 費用帯 × ダウンタイムで絞込。症例が増えるほど流入経路が増える設計にする</td></tr>
+<tr><td class="c"><span class="pri m">必須</span></td><td>医師 ⇄ 症例 ⇄ 施術の相互リンク</td><td>7章。症例登録時にタグを付けるだけで3方向のページが自動更新される</td></tr>
+<tr><td class="c"><span class="pri m">必須</span></td><td>予約導線の刷新</td><td>6章</td></tr>
+<tr><td class="c"><span class="pri m">必須</span></td><td>料金データの一元管理</td><td>施術詳細・料金表・特設ページが同じデータを参照。価格改定時の更新漏れと表記ゆれを構造的になくす</td></tr>
+<tr><td class="c"><span class="pri m">必須</span></td><td>症例投稿時の必須項目チェック</td><td>治療内容・費用・リスク・自由診療である旨を<b>入力しないと公開できない</b>仕組み。運用者が変わっても法令要件が崩れない（8章）</td></tr>
+<tr><td class="c"><span class="pri m">必須</span></td><td>スマホ固定CTAバー</td><td>「症例／LINE／予約」を全ページ下部に常時表示</td></tr>
+<tr><td class="c"><span class="pri m">必須</span></td><td>構造化データ</td><td>MedicalClinic／Physician／MedicalProcedure／FAQPage。医師名・施術名での検索や地図表示に効く</td></tr>
+<tr><td class="c"><span class="pri m">必須</span></td><td>流入計測の設計</td><td>GA4＋媒体別パラメータ。<b>ポータル・SNS・広告・自然検索を分けて</b>予約数まで追えるようにする（9章の判断材料になる）</td></tr>
+<tr><td class="c"><span class="pri s">推奨</span></td><td>LINE連携</td><td>友だち追加 → 予約前相談 → 予約リマインド → 術後フォロー。予約に踏み切れない層の受け皿かつ再来促進の資産</td></tr>
+<tr><td class="c"><span class="pri s">推奨</span></td><td>キャンペーンの期間自動出し分け</td><td>掲載期間を設定すれば自動で公開・終了。今回のようなデモデータ残りを防ぐ</td></tr>
+<tr><td class="c"><span class="pri s">推奨</span></td><td>Instagram / TikTok 連携</td><td>これから運用されるSNSの投稿をサイトに自動反映。症例動画の受け皿</td></tr>
+<tr><td class="c"><span class="pri s">推奨</span></td><td>費用シミュレーター</td><td>部位を選ぶと概算総額が出る。脂肪吸引は複数部位の組み合わせが多く、問い合わせ前の不安を減らせる</td></tr>
+<tr><td class="c"><span class="pri s">推奨</span></td><td>多言語（EN／CN）整備</td><td>八重洲立地を活かす。優先度はご判断次第</td></tr>
+<tr><td class="c"><span class="pri c">任意</span></td><td>ビフォーアフター比較スライダー</td><td>症例の見せ方。規制要件の表示とセットで実装</td></tr>
+<tr><td class="c"><span class="pri c">任意</span></td><td>会員マイページ</td><td>予約履歴・術後経過の記録。予約システム側の会員機能と重複するため要整理</td></tr>
+</table>
+</section>
+
+<!-- 6 -->
+<section id="s6">
+<h2><span class="n">6</span>予約導線の再設計</h2>
+<p class="lead">「Amazonのようにしたい」というご要望を、具体的な仕様に落とすと次の4点になります。<br>
+① 商品ページから直接カートに入る　② 途中に会員登録の壁がない　③ あと何ステップか常に見える　④ 複数まとめて検討できる</p>
+
+<div class="flow">
+<div class="flowbox bf"><div class="h">Before：現在（実際に辿った結果）</div><ol>
+<li>サイトの「予約」を押す</li>
+<li>外部システムへ移動（デザインが変わり、離脱が起きる）</li>
+<li>予約前確認事項 チェックボックス5項目</li>
+<li class="stop">⚠ ログイン／新規会員登録の壁<br><span style="font-weight:400">空き枠を見る前にアカウント作成</span></li>
+<li>メニューを<b>1つだけ</b>選ぶ</li>
+<li>日時を選ぶ</li>
+<li>確定</li>
+</ol></div>
+<div class="flowbox af"><div class="h">After：目標</div><ol>
+<li>施術ページの「この施術で予約する」を押す<br><span style="color:var(--sub);font-size:12px">→ 施術が選択済みの状態で着地</span></li>
+<li>空き枠カレンダーから日時を選ぶ<br><span style="color:var(--sub);font-size:12px">→ 気になる施術は複数選べる</span></li>
+<li>名前・連絡先・相談内容を入力して確定</li>
+<li style="list-style:none;margin-left:-18px;color:var(--main-d);font-weight:700">会員登録は予約完了後に任意で案内</li>
+</ol></div>
+</div>
+
+<h3>実現方法の3案</h3>
+<p>実現できる範囲は、現在お使いの予約システム（ACUSIS Cloud）の仕様に依存します。ベンダーへの確認結果に応じて、下から選ぶ形になります。</p>
+<table>
+<tr><th class="c" style="width:56px">案</th><th style="width:23%">方式</th><th>内容</th><th style="width:26%">前提条件</th></tr>
+<tr><td class="c"><b>1</b></td><td>サイト内完結（理想）</td><td>ACUSISのAPIで空き枠を取得し、サイト上のデザインのまま予約まで完結。離脱ポイントが実質ゼロになる</td><td>ACUSISに外部連携APIがあること</td></tr>
+<tr><td class="c"><b>2</b><span class="rec">現実解</span></td><td>ディープリンク＋ゲスト予約</td><td>施術・日付をURLパラメータで渡して予約画面に直接着地。あわせて会員登録必須の設定を外す</td><td>ゲスト予約設定の可否／施術指定URLの可否</td></tr>
+<tr><td class="c"><b>3</b></td><td>予約リクエスト方式</td><td>サイト側のフォームで施術・第1〜第3希望日時・連絡先を受け取り、クリニック側で枠を確保して確定連絡</td><td>APIもゲスト予約も不可の場合。<b>クリニック側の運用負荷は増える</b></td></tr>
+</table>
+<div class="card">
+<h4>ご提案</h4>
+<p style="margin-bottom:0">まず<b>案2</b>の可否をベンダーに確認します。不可であれば案3。案1はAPIの有無次第です。<br>
+弊社からACUSISベンダー宛の<b>質問票を作成してお渡しします</b>（貴院からベンダーへ送っていただく形が最短です）。</p>
+</div>
+<p class="note">補足：予約導線の設計は、注意事項5項目の見せ方にも及びます。現在は5項目すべてを予約の入口に置いていますが、キャンセル規定や未成年同伴などは<b>日時を選んだ後の確認画面</b>で示すほうが、伝わる量を落とさずに離脱を減らせます。</p>
+</section>
+
+<!-- 7 -->
+<section id="s7">
+<h2><span class="n">7</span>医師 × 症例の2軸設計</h2>
+<p class="lead">お打ち合わせで挙がった「縦切り・横切り」について、以下のように解釈しています。<b>認識が合っているかご確認ください。</b></p>
+
+<div class="axis">
+  <div class="nd">施術ページ<small>例：鼻中隔延長</small></div>
+  <div class="ar">→</div>
+  <div class="nd">その施術の症例<small>自動で一覧表示</small></div>
+</div>
+<p style="margin-top:-6px"><b>縦（施術軸）</b>：施術から入った人が「この施術の実績」を見て、そのまま執刀医に辿り着く。<br><span style="color:var(--sub);font-size:13px">施術ページ → その施術の症例 → その症例を執刀した医師</span></p>
+
+<div class="axis">
+  <div class="nd">医師ページ<small>例：◯◯医師</small></div>
+  <div class="ar">→</div>
+  <div class="nd">その医師の症例<small>自動で一覧表示</small></div>
+</div>
+<p style="margin-top:-6px"><b>横（医師軸）</b>：SNSやポータルで医師を知った人が「この先生の実績」を見て、施術内容に辿り着く。<br><span style="color:var(--sub);font-size:13px">医師ページ → その医師の症例 → その症例の施術</span></p>
+
+<div class="card">
+<h4>実装としては「症例1件にタグを2つ付ける」だけ</h4>
+<p>症例を登録するとき、<b>施術タグ</b>と<b>執刀医タグ</b>を必須入力にします。それだけで、
+①施術ページの症例欄、②医師ページの症例欄、③症例一覧の絞り込み、が<b>すべて自動で更新</b>されます。運用側の手間は増えません。</p>
+<p style="margin-bottom:0">この設計の効果は、症例が溜まるほど大きくなります。症例100件・医師5名・施術30種なら、それだけで検索エンジンから見た入口が数百通りに増えます。<b>逆に言えば、症例撮影の運用が回らないとこの設計は空回りします</b>（9章）。</p>
+</div>
+</section>
+
+<!-- 8 -->
+<section id="s8">
+<h2><span class="n">8</span>医療広告規制への対応（サイト仕様に組み込む）</h2>
+<p class="lead">医療広告ガイドラインおよび事例解説書（第6版）を踏まえ、<b>運用者が意識しなくても要件を満たす</b>作りにします。人の注意力に頼ると必ず抜けが出るためです。</p>
+<table>
+<tr><th style="width:30%">要件</th><th>サイト側の作り</th></tr>
+<tr><td>症例写真の限定解除4要件<br>（治療内容／費用／リスク・副作用／自由診療である旨）</td><td>症例1件ごとに入力必須。<b>同一画面・症例ごとに個別表示</b>。「詳細はこちら」でリンク先に逃がす、複数症例をまとめて1か所に書く、アコーディオンで折りたたむ、いずれも不備として扱われるため実装しない</td></tr>
+<tr><td>リスク・副作用の書き方</td><td>入力欄を「<b>受けた結果起こりうる症状</b>」に限定。禁忌事項（受けられない方）と注意事項（術前術後の過ごし方）は別欄に分離する。「ダウンタイムはありません」等の長所が混ざらないようにする</td></tr>
+<tr><td>体験談・口コミ</td><td>掲載しない。スタッフの感想・口コミサイトからの転載・症例に添えた患者様の主訴も同様。<b>代わりに客観データ</b>（期間つきの症例件数、厚生労働省への届出、医師の経歴・資格）で信頼を作る</td></tr>
+<tr><td>「日本初導入」の表記</td><td>メーカー等の<b>客観的な裏付けと時点</b>を明示できる形でのみ記載。「日本一」「最も」等の最上級表現は、事実であっても比較優良広告として禁止される点に注意</td></tr>
+<tr><td>症例件数・実績数</td><td><b>集計期間を必ず併記</b>（例：2025年8月〜2026年7月）。期間・母数のない件数は誇大広告にあたりうる</td></tr>
+<tr><td>広告・ポータル用の文言</td><td>バナー広告・リスティング広告は限定解除が使えず、サイトに書ける内容がそのままは書けません。<b>サイト用文言の転用を前提にしない</b>運用ルールをあわせてお渡しします</td></tr>
+</table>
+<p class="note">※ 掲載可否の最終判断は貴院にありますが、判断に迷う箇所は論点を明示してご確認をお願いする形で進めます。</p>
+</section>
+
+<!-- 9 -->
+<section id="s9">
+<h2><span class="n">9</span>ご判断・ご確認いただきたいこと</h2>
+
+<h3>最重要：集客方法をどう組むか</h3>
+<p>現在ポータルサイトに出稿中、SNSはこれから、という状況とうかがっています。ここでご検討いただきたいのは、<b>「3施術に同じ予算を均等に配分するのが最も効率が悪い」</b>という点です。施術によって、患者様が決めるまでの過程がまったく違うためです。</p>
+<table>
+<tr><th style="width:20%">施術</th><th style="width:26%">患者様の決め方</th><th>効くチャネル</th><th style="width:20%">サイト側の主役</th></tr>
+<tr><td><b>脂肪吸引</b></td><td>比較的短期。価格とダウンタイムで比べる</td><td><b>ポータル・リスティング広告</b>。件数を作る主力。医師の確保も比較的容易とのことなので、供給を増やしやすい</td><td>機器・料金・ダウンタイム</td></tr>
+<tr><td><b>鼻</b></td><td>数か月かけて症例を見比べる</td><td><b>Instagram・症例数・指名検索</b>。ポータルの一覧では選ばれにくい</td><td>症例の量と質</td></tr>
+<tr><td><b>輪郭形成・骨切り</b></td><td>半年〜。安全性と執刀医で決める</td><td><b>医師の発信・YouTube・自然検索</b>。価格訴求は逆効果になりやすい</td><td>執刀医・安全体制</td></tr>
+</table>
+
+<div class="q">
+  <div class="qn">Q1</div>
+  <h4>集客予算と、3本柱への配分をどうしますか？</h4>
+  <div class="why">サイトの構成は決まっても、どのページに人を集めるかで作り込みの優先順位が変わります。</div>
+  <div class="opts">
+    <b>1.</b> 脂肪吸引に寄せる（ポータル・広告中心／短期で件数を作る）<span class="rec">開業期の推奨</span><br>
+    <b>2.</b> 3施術に均等配分（安全だが、どれも中途半端になりやすい）<br>
+    <b>3.</b> 鼻・骨切りに寄せる（単価は高いが、成果が出るまで半年以上かかる）
+  </div>
+</div>
+
+<div class="q">
+  <div class="qn">Q2</div>
+  <h4>SNSは誰が運用しますか？また、どのくらいの頻度で素材が出せますか？</h4>
+  <div class="why">「これからSNSをやる」を実現できるかは、体制と素材供給で決まります。サイト側にSNS連携を作っても、投稿が止まれば逆効果になります。</div>
+  <div class="opts"><b>1.</b> 院内（担当者と週あたり投稿数を決める）　<b>2.</b> 外注　<b>3.</b> 医師個人アカウント中心</div>
+</div>
+
+<div class="q">
+  <div class="qn">Q3</div>
+  <h4>症例写真の撮影運用を決められますか？（誰が・いつ・どの規格で）</h4>
+  <div class="why"><b>これが今回の提案で最も重要な確認事項です。</b>7章の2軸設計も、鼻・骨切りの集客も、症例が溜まらないと機能しません。撮影が回らないなら、サイトの作りをそこに合わせて変える必要があります（機器・価格・医師経歴で戦う構成にする）。</div>
+  <div class="opts">決めていただきたいこと：撮影担当者／撮影タイミング（術前・術後◯日）／照明・角度の統一ルール／患者様の同意取得フロー</div>
+</div>
+
+<h3>その他の確認事項</h3>
+<table>
+<tr><th class="c" style="width:52px">No</th><th style="width:30%">項目</th><th>なぜ必要か</th></tr>
+<tr><td class="c">4</td><td>予約システム（ACUSIS Cloud）の仕様</td><td>外部連携APIの有無／会員登録なしのゲスト予約の可否／施術を指定した状態で予約画面に着地できるか。6章の案1〜3の選択に必要（弊社で質問票を作成します）</td></tr>
+<tr><td class="c">5</td><td>脂肪吸引機器の機種名・「日本初導入」の裏付け・独占期間</td><td>特設ページの主役になります。表記可否の判断にも必要（8章）</td></tr>
+<tr><td class="c">6</td><td>輪郭形成・骨切りの提供体制</td><td>執刀医／入院・術後管理の体制／現時点の症例の有無。ページを作っても受けられる体制がないと逆効果になるため</td></tr>
+<tr><td class="c">7</td><td>オペ室・執刀シーンの撮影可否</td><td>ファーストビューの主役素材。患者様が特定されない画角と書面同意が前提</td></tr>
+<tr><td class="c">8</td><td>医師情報の<b>不足分</b></td><td>略歴・資格・所属学会は /about/ にあるため、追加で必要なのは <b>①各医師の担当施術　②「執刀の考え方」インタビューの可否と日程　③5名同一条件での写真撮り直しの可否</b> の3点です</td></tr>
+<tr><td class="c">9</td><td>現行サイトの制作会社との契約状況</td><td>現行は独自WordPressテーマです。<b>既存テーマの改修で進めるか、作り直すか</b>の判断に必要。データ（症例・メニュー・料金）は引き継げます</td></tr>
+<tr><td class="c">10</td><td>多言語（EN／CN）の位置づけ</td><td>八重洲立地を活かして本格運用するか、現状維持か</td></tr>
+</table>
+</section>
+
+<!-- 10 -->
+<section id="s10">
+<h2><span class="n">10</span>費用プラン（松・竹・梅）</h2>
+<p class="lead">ご予算に応じて3プランをご用意しました。いずれも<b>現行のWordPressテーマを土台にした改修</b>を前提としています（症例・メニュー・料金のデータはそのまま引き継げるため、ゼロから作り直すより費用を抑えられます）。<br>
+なお、30ページ超・独自機能ありの医療サイトをスクラッチで新規構築する場合は一般に150〜300万円規模になります。今回は<b>「効く順に投資する」</b>考え方で、優先度の高い部分から積み上げる形にしています。</p>
+
+<table>
+<tr>
+  <th style="width:34%">項目</th>
+  <th class="c" style="width:22%">梅<br><span style="font-weight:400;font-size:11px">80万円</span></th>
+  <th class="c" style="width:22%">竹<span class="rec">推奨</span><br><span style="font-weight:400;font-size:11px">90万円</span></th>
+  <th class="c" style="width:22%">松<br><span style="font-weight:400;font-size:11px">100万円</span></th>
+</tr>
+<tr><td colspan="4" style="background:var(--bg2);font-weight:700;font-size:12.5px">■ 応急対応・土台</td></tr>
+<tr><td>Phase 0（デモデータ非公開化・医師ページ復旧・サイトマップ整理）</td><td class="c">●</td><td class="c">●</td><td class="c">●</td></tr>
+<tr><td>URL・スラッグの英字化／日本語URLの解消</td><td class="c">●</td><td class="c">●</td><td class="c">●</td></tr>
+<tr><td colspan="4" style="background:var(--bg2);font-weight:700;font-size:12.5px">■ ページ</td></tr>
+<tr><td>トップページ再設計（FV・3本柱の入口・回遊設計）</td><td class="c">●</td><td class="c">●</td><td class="c">●</td></tr>
+<tr><td>医師ページ（一覧＋詳細5名）新設</td><td class="c">●</td><td class="c">●</td><td class="c">●</td></tr>
+<tr><td>施術詳細ページの型を統一（4章の10ブロック）</td><td class="c">●</td><td class="c">●</td><td class="c">●</td></tr>
+<tr><td><b>特設ページ（脂肪吸引・鼻・輪郭形成）</b></td><td class="c">1本<br><span style="font-size:11px;color:var(--sub)">脂肪吸引のみ</span></td><td class="c"><b>3本</b></td><td class="c"><b>3本</b></td></tr>
+<tr><td>設備・機器ページ（日本初導入機器）</td><td class="c">－</td><td class="c">－</td><td class="c">●</td></tr>
+<tr><td colspan="4" style="background:var(--bg2);font-weight:700;font-size:12.5px">■ 機能</td></tr>
+<tr><td>医師 ⇄ 症例 ⇄ 施術の相互リンク（7章の2軸）</td><td class="c">●</td><td class="c">●</td><td class="c">●</td></tr>
+<tr><td>スマホ固定CTAバー／予約導線の改善（案2：ディープリンク方式）</td><td class="c">●</td><td class="c">●</td><td class="c">●</td></tr>
+<tr><td>症例投稿時の必須項目チェック（広告規制対応）</td><td class="c">●</td><td class="c">●</td><td class="c">●</td></tr>
+<tr><td><b>症例検索</b>（施術×医師×性別×年代×費用帯×ダウンタイム）</td><td class="c">簡易<br><span style="font-size:11px;color:var(--sub)">施術・医師のみ</span></td><td class="c"><b>●</b></td><td class="c"><b>●</b></td></tr>
+<tr><td>料金データの一元管理（施術詳細・料金表・特設で共通化）</td><td class="c">－</td><td class="c">●</td><td class="c">●</td></tr>
+<tr><td>構造化データ（Physician／MedicalProcedure／FAQ 等）</td><td class="c">－</td><td class="c">●</td><td class="c">●</td></tr>
+<tr><td>計測設計（GA4＋媒体別パラメータ／予約数まで追える状態に）</td><td class="c">－</td><td class="c">●</td><td class="c">●</td></tr>
+<tr><td>費用シミュレーター（部位を選ぶと概算総額）</td><td class="c">－</td><td class="c">－</td><td class="c">●</td></tr>
+<tr><td>LINE連携（友だち追加→予約前相談→リマインド）</td><td class="c">－</td><td class="c">－</td><td class="c">●</td></tr>
+<tr><td>Instagram／TikTok 連携</td><td class="c">－</td><td class="c">－</td><td class="c">●</td></tr>
+<tr><td colspan="4" style="background:var(--bg2);font-weight:700;font-size:12.5px">■ 伴走</td></tr>
+<tr><td>予約システム（ACUSIS）ベンダー向け質問票の作成</td><td class="c">●</td><td class="c">●</td><td class="c">●</td></tr>
+<tr><td>撮影ディレクション（医師写真・オペシーン・症例の統一規格設計）</td><td class="c">－</td><td class="c">規格設計<br><span style="font-size:11px;color:var(--sub)">のみ</span></td><td class="c"><b>設計＋立会</b></td></tr>
+<tr><td>公開後の計測レポート</td><td class="c">－</td><td class="c">1か月</td><td class="c"><b>3か月</b></td></tr>
+<tr><td colspan="4" style="background:var(--bg2);font-weight:700;font-size:12.5px">■ 制作ページ数の目安</td></tr>
+<tr><td>新規デザイン・実装するページ</td><td class="c">約12ページ</td><td class="c">約18ページ</td><td class="c">約24ページ</td></tr>
+</table>
+
+<div class="grid3">
+  <div class="card"><h4>梅 ｜ 80万円</h4>
+  <p style="font-size:12.5px">「壊れているものを直し、主力1本を立てる」プラン。<br>現状の重大な不具合と、医師・症例・予約の3点だけを最短で解決します。</p>
+  <p style="font-size:12.5px;margin-bottom:0"><b>向いている場合：</b>まず脂肪吸引で件数を作り、鼻・骨切りは体制が整ってから、と考える場合。</p></div>
+
+  <div class="card" style="border-color:var(--main);border-width:2px"><h4>竹 ｜ 90万円<span class="rec">推奨</span></h4>
+  <p style="font-size:12.5px">「3本柱を全部立て、伸びる仕組みまで入れる」プラン。<br>特設3本＋症例検索＋計測設計まで含み、<b>公開後に自走して伸びる形</b>になります。</p>
+  <p style="font-size:12.5px;margin-bottom:0"><b>推奨理由：</b>特設ページは3本セットで作るほうが1本あたりの追加費用が下がり、ナビゲーション・回遊設計も一度で済みます。また計測設計が入らないと、9章の集客判断を数字で検証できません。</p></div>
+
+  <div class="card"><h4>松 ｜ 100万円</h4>
+  <p style="font-size:12.5px">「集客チャネルの受け皿まで一式」プラン。<br>設備ページ・費用シミュレーター・LINE／SNS連携を加え、これから始めるSNSとポータルの受け皿を先に作ります。</p>
+  <p style="font-size:12.5px;margin-bottom:0"><b>向いている場合：</b>SNSを本格運用する体制が決まっている場合（9章 Q2）。撮影の立会いまで含みます。</p></div>
+</div>
+
+<div class="card">
+<h4>費用に含まれないもの（共通）</h4>
+<ul style="margin-bottom:0;font-size:13px">
+<li><b>撮影費</b>（医師写真・オペシーン・症例撮影のカメラマン費用）／モデル費／有料写真素材費</li>
+<li><b>サーバー・ドメイン費用</b>、予約システム（ACUSIS）の設定変更にベンダー側の費用が発生する場合のその費用</li>
+<li><b>広告出稿費</b>・ポータル掲載費</li>
+<li>症例・コラムの<b>原稿執筆</b>（監修体制が決まり次第、別途ご相談）</li>
+<li>多言語（EN／CN）の翻訳・整備 ※ご要望があれば別途お見積りします</li>
+</ul>
+</div>
+<p class="note">※ 上記は税抜表示です。お支払いは着手時50%・公開時50%を想定しています。Phase 0（応急対応）のみ先行着手することも可能です。</p>
+</section>
+
+<!-- 11 -->
+<section id="s11">
+<h2><span class="n">11</span>進め方</h2>
+<table>
+<tr><th class="c" style="width:96px">フェーズ</th><th style="width:19%">期間目安</th><th>内容</th></tr>
+<tr><td class="c"><b>Phase 0</b></td><td>今週中</td><td><b>リニューアルを待たずに実施。</b>デモデータの非公開化、医師ページの応急対応（一覧の復旧または一時的なnoindex）、サイトマップの整理。既に公開されている以上、早いほど傷が浅く済みます</td></tr>
+<tr><td class="c"><b>Phase 1</b></td><td>約1か月</td><td>設計確定。サイトマップ／全ページのワイヤーフレーム／ファーストビュー確定版／予約システム仕様の確認と方式決定／撮影計画（医師・オペ室・症例規格）</td></tr>
+<tr><td class="c"><b>Phase 2</b></td><td>約2〜3か月</td><td>構築。トップ → 特設3ページ → 施術メニュー → 症例・医師 → 予約導線 → その他。<b>特設ページを先に公開して集客を始める</b>段階リリースも可能です</td></tr>
+<tr><td class="c"><b>Phase 3</b></td><td>公開後 継続</td><td>運用。症例投稿フローの定着／コラム／SNS連携／計測レポート（媒体別の予約数まで追う）／改善</td></tr>
+</table>
+<div class="card">
+<h4>次回までにお願いしたいこと</h4>
+<ol style="margin-bottom:0">
+<li><b>3章のページ構成・5章の機能一覧</b>について、過不足のご確認</li>
+<li><b>10章の費用プラン</b>（松・竹・梅）のご選択</li>
+<li>本資料の <b>9章 Q1〜Q3</b> についてのご意向</li>
+<li>その他確認事項 No.4〜10 のうち、すぐ分かるものの回答</li>
+</ol>
+</div>
+<p class="note">構成と費用プランが固まり次第、ファーストビューを含むデザインを詰めます。方向性の参考として3案を作成済みです。</p>
+<a class="linkbtn" href="fv-design.html">【参考】ファーストビュー デザイン案（3案＋スマホ版）→</a>
+</section>
+
+</div>
+
+<footer><div class="in">
+  ZOEN-TECH株式会社｜BIOLIS CLINIC 様 サイトリニューアルご提案｜2026年8月18日<br>
+  現状診断の内容は、2026年8月18日時点で公開されているWebサイト・サイトマップ・予約システムを実際に確認した結果に基づいています。
+</div></footer>
+
+</body>
+</html>
