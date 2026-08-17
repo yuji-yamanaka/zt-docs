@@ -46,7 +46,7 @@ h2.sec .n{font-family:var(--sans);font-size:11px;letter-spacing:.2em;color:#fff;
 .frame-bar{background:#e8e3da;padding:7px 12px;display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--line)}
 .dot{width:9px;height:9px;border-radius:50%;background:#c9c2b6}
 .frame-url{margin-left:8px;font-size:10.5px;color:#7b7366;background:#fff;border-radius:20px;padding:2px 12px}
-.scaler{width:100%;overflow:hidden;position:relative}
+.scaler{width:100%;overflow:hidden;position:relative;aspect-ratio:1280/700}
 .stage{width:1280px;transform-origin:top left}
 
 /* ================= FV common ================= */
@@ -429,15 +429,23 @@ FVを「入口の分岐点」として設計します。背景は執刀シーン
 
 <script>
 (function(){
+  // 高さは CSS の aspect-ratio が担保する。JSは横幅に合わせた縮小率だけを与える。
   function fit(){
     document.querySelectorAll('.scaler').forEach(function(sc){
       var st=sc.querySelector('.stage'); if(!st) return;
-      var s=sc.clientWidth/1280;
-      st.style.transform='scale('+s+')';
-      sc.style.height=(st.getBoundingClientRect().height)+'px';
+      var w=sc.clientWidth;
+      if(!w) return;                       // 幅0（非表示タブ等）では触らない
+      st.style.transform='scale('+(w/1280)+')';
     });
   }
-  fit(); window.addEventListener('resize',fit); setTimeout(fit,150);
+  fit();
+  window.addEventListener('resize',fit);
+  window.addEventListener('load',fit);
+  document.addEventListener('visibilitychange',fit);
+  if(window.ResizeObserver){
+    var ro=new ResizeObserver(fit);
+    document.querySelectorAll('.scaler').forEach(function(sc){ro.observe(sc);});
+  }
 })();
 </script>
 
